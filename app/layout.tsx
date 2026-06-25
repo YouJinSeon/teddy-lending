@@ -4,8 +4,8 @@ import "./globals.css";
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com";
 // 네이버 규칙: description ≤ 80자, og:description === description
 const DESC =
-  "AI가 뉴스를 3줄로 요약하고, 영어회화·시험 준비까지. Teddy 앱으로 매일을 더 똑똑하게.";
-const TITLE = "Teddy — AI 뉴스 요약 & 영어 학습 앱";
+  "AI 뉴스 요약, 영어회화·시험, 사진 식단 관리까지. Teddy 앱으로 매일을 더 똑똑하게.";
+const TITLE = "Teddy — AI 뉴스·영어·다이어트 앱";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   keywords: [
     "AI 뉴스 요약", "뉴스 요약 앱", "뉴스 브리핑", "속보 알림",
     "영어회화 앱", "AI 영어회화", "오픽 앱", "토익스피킹", "영어 단어 앱", "발음 평가",
+    "다이어트 앱", "식단 관리 앱", "칼로리 기록", "AI 식단 코치", "사진 칼로리",
   ],
   alternates: { canonical: "/" },
   openGraph: {

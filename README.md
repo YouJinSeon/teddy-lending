@@ -49,4 +49,4 @@ app/
   globals.css    # 스타일
 ```
 
-수정 포인트: 도메인은 env로, 앱 링크는 `page.tsx` 상단 상수(`NEWS_URL`, `ENG_URL`).
+수정 포인트: 도메인은 env로, 앱 링크는 `page.tsx` 상단 상수(`NEWS_URL`, `ENG_URL`, `FOOD_URL`), 앱 정보는 `APPS` 배열, 스크린샷은 `public/shots/{news,english,diet}/`.
