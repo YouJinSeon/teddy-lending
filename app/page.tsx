@@ -32,6 +32,19 @@ const jsonLd = {
   ],
 };
 
+function Icon({ name }: { name: string }) {
+  return (
+    <svg className="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      {name === "sun" && <g><circle cx="12" cy="12" r="4.2" /><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7" /></g>}
+      {name === "chat" && <g><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.4-4.2A7.5 7.5 0 1 1 20 11.5z" /><path d="M8.5 11h7M8.5 14h4" /></g>}
+      {name === "camera" && <g><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H7l1.4-2h7.2L17 7h2.5A1.5 1.5 0 0 1 21 8.5V18a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18z" /><circle cx="12" cy="13" r="3.4" /></g>}
+      {name === "spark" && <g><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.4L12 17l-1.9-5.6L4.5 10l5.6-1.4z" /><path d="M19 4.5l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z" /></g>}
+      {name === "target" && <g><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4.4" /><circle cx="12" cy="12" r="1" /></g>}
+      {name === "shield" && <g><path d="M12 3l7 2.7v5.1c0 4.6-3 8.2-7 10.2-4-2-7-5.6-7-10.2V5.7z" /><path d="M9 12l2 2 4-4" /></g>}
+    </svg>
+  );
+}
+
 function PlayBadge({ href, big = false }: { href: string; big?: boolean }) {
   return (
     <a className={`play${big ? " play-big" : ""}`} href={href} target="_blank" rel="noopener" aria-label="Google Play에서 다운로드">
@@ -95,12 +108,12 @@ export default function Home() {
 
       <section className="cards container">
         {[
-          { t: "매일 아침, AI가 골라주는 맞춤 뉴스 브리핑", d: "관심사 기반 개인화 피드 · 실시간 시세", e: "☀️", c: "news" },
-          { t: "AI가 핵심만 요약, 궁금하면 바로 질문", d: "긴 기사도 3줄 요약 · AI에게 물어보기", e: "💬", c: "eng" },
-          { t: "사진 한 장으로 칼로리·영양까지 기록", d: "찍으면 자동 인식 · 1:1 AI 코치", e: "📊", c: "diet" },
+          { t: "매일 아침, AI가 골라주는 맞춤 뉴스 브리핑", d: "관심사 기반 개인화 피드 · 실시간 시세", icon: "sun", c: "news" },
+          { t: "AI가 핵심만 요약, 궁금하면 바로 질문", d: "긴 기사도 3줄 요약 · AI에게 물어보기", icon: "chat", c: "eng" },
+          { t: "사진 한 장으로 칼로리·영양까지 기록", d: "찍으면 자동 인식 · 1:1 AI 코치", icon: "camera", c: "diet" },
         ].map((card) => (
           <div className={`fcard fcard-${card.c}`} key={card.t}>
-            <div className={`ficon ficon-${card.c}`}>{card.e}</div>
+            <div className={`ficon ficon-${card.c}`}><Icon name={card.icon} /></div>
             <h3>{card.t}</h3>
             <p>{card.d}</p>
           </div>
@@ -130,13 +143,13 @@ export default function Home() {
           <p className="why-sub">매일 사용하는 AI 습관 파트너</p>
           <div className="why-grid">
             {[
-              { e: "🧠", t: "AI가 핵심만 요약", d: "시간은 절약하고 정보는 더 빠르게" },
-              { e: "💬", t: "대화로 배우는 맞춤", d: "실제 상황에서 쓰는 진짜 영어" },
-              { e: "📷", t: "사진으로 간편하게", d: "식단·칼로리·체중을 한 번에 관리" },
-              { e: "🎯", t: "꾸준함이 답이다", d: "성장형 뱃지와 미션으로 매일 성장" },
-              { e: "🔒", t: "안전하고 믿을 수 있는", d: "사용자 데이터를 안전하게 보호" },
+              { icon: "spark", t: "AI가 핵심만 요약", d: "시간은 절약하고 정보는 더 빠르게", color: "var(--eng)" },
+              { icon: "chat", t: "대화로 배우는 맞춤", d: "실제 상황에서 쓰는 진짜 영어", color: "var(--news)" },
+              { icon: "camera", t: "사진으로 간편하게", d: "식단·칼로리·체중을 한 번에 관리", color: "var(--diet)" },
+              { icon: "target", t: "꾸준함이 답이다", d: "성장형 뱃지와 미션으로 매일 성장", color: "#a855f7" },
+              { icon: "shield", t: "안전하고 믿을 수 있는", d: "사용자 데이터를 안전하게 보호", color: "var(--eng)" },
             ].map((w) => (
-              <div className="why-item" key={w.t}><div className="why-ico">{w.e}</div><strong>{w.t}</strong><p>{w.d}</p></div>
+              <div className="why-item" key={w.t}><div className="why-ico" style={{ color: w.color }}><Icon name={w.icon} /></div><strong>{w.t}</strong><p>{w.d}</p></div>
             ))}
           </div>
         </div>
@@ -144,7 +157,7 @@ export default function Home() {
 
       <section className="band">
         <div className="container band-inner">
-          <div className="mascot-slot" aria-hidden />
+          <img className="mascot" src="/mascot.png" alt="Teddy 마스코트" />
           <div className="band-text">
             <h2>오늘부터 똑똑한 습관을 시작해보세요!</h2>
             <p>뉴스·영어·다이어트, AI가 매일 함께합니다.</p>
