@@ -157,7 +157,7 @@ export default function Home() {
 
       <section className="band">
         <div className="container band-inner">
-          <img className="mascot" src="/mascot.png" alt="Teddy 마스코트" />
+          <div className="mascot-wrap"><img className="mascot" src="/mascot.png" alt="Teddy 마스코트" /></div>
           <div className="band-text">
             <h2>오늘부터 똑똑한 습관을 시작해보세요!</h2>
             <p>뉴스·영어·다이어트, AI가 매일 함께합니다.</p>
