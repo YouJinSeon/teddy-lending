@@ -8,7 +8,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 section[id], .app[id] { scroll-margin-top: 84px; }
-body { background: var(--bg); color: var(--ink); line-height: 1.6;
+body { background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
@@ -130,4 +130,17 @@ h1, h2, h3, h4 { letter-spacing: -0.6px; }
   .band-inner { flex-direction: column; text-align: center; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } .why-grid { grid-template-columns: 1fr; } .footer-inner { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .nav-links { gap: 14px; font-size: 13px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero .sub br { display: none; }
+  .hero h1 { font-size: 38px; }
+  .phone { width: 150px; }
+  .hero-phones .phone { margin: 0 -14px; }
+  .app-phones .phone { margin: 0 -18px; }
+  .cta-row { gap: 8px; }
+  .chip { font-size: 14px; padding: 10px 14px; }
+  .band-inner { padding: 28px 22px; }
+  .play-t b { font-size: 17px; }
+}
