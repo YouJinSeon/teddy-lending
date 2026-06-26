@@ -96,8 +96,8 @@ h1, h2, h3, h4 { letter-spacing: -0.6px; }
 /* CTA band */
 .band { padding: 26px 0 64px; }
 .band-inner { display: flex; align-items: center; gap: 24px; background: linear-gradient(110deg, #e9f0ff, #eef3fe); border: 1px solid #dde7fb; border-radius: 28px; padding: 36px 44px; }
-.mascot-wrap { flex: 0 0 auto; width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.mascot { width: 290px; height: auto; }
+.mascot-wrap { flex: 0 0 auto; width: 172px; height: 150px; }
+.mascot { width: 100%; height: 100%; object-fit: contain; }
 .band-text { flex: 1; }
 .band-text h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 800; }
 .band-text p { color: var(--sub); margin-top: 6px; }
