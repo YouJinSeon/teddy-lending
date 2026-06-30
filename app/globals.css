@@ -4,6 +4,7 @@
   --news: #f97316; --news-soft: #fff3ea;
   --eng: #4f7cf6; --eng-soft: #eef3fe;
   --diet: #16a34a; --diet-soft: #e9f7ee;
+  --qr: #7c3aed; --qr-soft: #f3eefe;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -144,3 +145,10 @@ h1, h2, h3, h4 { letter-spacing: -0.6px; }
   .band-inner { padding: 28px 22px; }
   .play-t b { font-size: 17px; }
 }
+
+/* ScanGuard(QR) 테마 */
+.chip-qr { color: var(--qr); }
+.fcard-qr { background: linear-gradient(180deg, var(--qr-soft), #fff 70%); }
+.ficon-qr { background: var(--qr-soft); color: var(--qr); }
+.badge-qr { background: var(--qr-soft); color: #6d28d9; }
+.app-qr .check { background: var(--qr); }

@@ -2,6 +2,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://your-domain.com";
 const NEWS_URL = "https://play.google.com/store/apps/details?id=com.teddyjs.news";
 const ENG_URL = "https://play.google.com/store/apps/details?id=com.teddyjs.english";
 const FOOD_URL = "https://play.google.com/store/apps/details?id=com.teddyjs.food";
+const QR_URL = "https://play.google.com/store/apps/details?id=com.teddyjs.qrsccanner";
 
 type App = { id: string; theme: string; badge: string; name: string; tagline: string; features: string[]; url: string };
 
@@ -12,13 +13,16 @@ const APPS: App[] = [
     features: ["AI 3줄 요약으로 핵심만 빠르게", "아침·점심·저녁 자동 브리핑", "속보 푸시 알림", "오프라인 열람 · 홈 화면 위젯"], url: NEWS_URL },
   { id: "diet", theme: "diet", badge: "AI 다이어트 코치", name: "곰코치", tagline: "사진 한 장이면 칼로리 기록 끝. 1:1 AI 코치와 식단·체중을 함께 관리해요.",
     features: ["사진 찍으면 칼로리·영양소 자동 기록", "1:1 AI 코치 채팅", "체중 추세 그래프 · 목표 관리", "성장형 뱃지 & 미션으로 꾸준하게"], url: FOOD_URL },
+  { id: "qr", theme: "qr", badge: "안전한 QR 스캐너", name: "ScanGuard", tagline: "QR 코드, 찍기 전에 안전부터. 악성·피싱 링크를 미리 걸러주는 안심 스캐너예요.",
+    features: ["QR·바코드 빠르고 정확하게 스캔", "악성·피싱 링크 사전 감지 & 경고", "스캔 기록 저장 · 다시 보기", "내 QR 코드 만들기 · 공유"], url: QR_URL },
 ];
 
 const FAQ = [
-  { q: "앱은 무료인가요?", a: "세 앱 모두 무료로 시작할 수 있어요. 일부 고급 기능은 선택형 프리미엄으로 제공돼요." },
+  { q: "앱은 무료인가요?", a: "모든 앱 무료로 시작할 수 있어요. 일부 고급 기능은 선택형 프리미엄으로 제공돼요." },
   { q: "어떤 기기에서 쓸 수 있나요?", a: "현재 안드로이드(Google Play)에서 다운로드할 수 있어요." },
   { q: "Teddy 영어는 어떤 시험을 지원하나요?", a: "OPIc·토익스피킹 AI 모의시험으로 예상 등급과 항목별 점수를 받을 수 있어요." },
   { q: "곰코치는 칼로리를 어떻게 기록하나요?", a: "음식 사진을 찍으면 AI가 메뉴와 칼로리·영양소를 자동으로 인식해 기록해줘요." },
+  { q: "ScanGuard는 일반 QR 스캐너와 뭐가 다른가요?", a: "QR을 열기 전에 링크를 검사해 악성·피싱이 의심되면 미리 경고해줘요. 안전하게 스캔할 수 있어요." },
 ];
 
 const jsonLd = {
@@ -28,6 +32,7 @@ const jsonLd = {
     { "@type": "SoftwareApplication", name: "Teddy 영어 — AI 영어회화·단어", applicationCategory: "EducationalApplication", operatingSystem: "Android", offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" }, url: ENG_URL },
     { "@type": "SoftwareApplication", name: "뉴스 브리핑 — AI 뉴스 요약·속보", applicationCategory: "NewsApplication", operatingSystem: "Android", offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" }, url: NEWS_URL },
     { "@type": "SoftwareApplication", name: "곰코치 — AI 다이어트·식단 코치", applicationCategory: "HealthApplication", operatingSystem: "Android", offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" }, url: FOOD_URL },
+    { "@type": "SoftwareApplication", name: "ScanGuard — 안전한 QR 스캐너", applicationCategory: "UtilitiesApplication", operatingSystem: "Android", offers: { "@type": "Offer", price: "0", priceCurrency: "KRW" }, url: QR_URL },
     { "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ],
 };
@@ -41,6 +46,7 @@ function Icon({ name }: { name: string }) {
       {name === "spark" && <g><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.4L12 17l-1.9-5.6L4.5 10l5.6-1.4z" /><path d="M19 4.5l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z" /></g>}
       {name === "target" && <g><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4.4" /><circle cx="12" cy="12" r="1" /></g>}
       {name === "shield" && <g><path d="M12 3l7 2.7v5.1c0 4.6-3 8.2-7 10.2-4-2-7-5.6-7-10.2V5.7z" /><path d="M9 12l2 2 4-4" /></g>}
+      {name === "scan" && <g><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16" /></g>}
     </svg>
   );
 }
@@ -80,6 +86,7 @@ export default function Home() {
             <a href="#english">Teddy 영어</a>
             <a href="#news">뉴스 브리핑</a>
             <a href="#diet">곰코치</a>
+            <a href="#qr">ScanGuard</a>
             <a href="#faq">FAQ</a>
           </div>
         </div>
@@ -88,13 +95,14 @@ export default function Home() {
       <header className="hero">
         <div className="container hero-inner">
           <div className="hero-text">
-            <span className="pill">AI 뉴스·영어·다이어트 앱</span>
-            <h1>AI로 매일을<br />더 똑똑하게</h1>
-            <p className="sub">영어는 AI와 대화로, 뉴스는 3줄로,<br />식단은 사진 한 장으로. 매일 쓰는 AI 앱 셋.</p>
+            <span className="pill">영어·뉴스·다이어트·QR 앱</span>
+            <h1>매일을<br />더 똑똑하게</h1>
+            <p className="sub">영어는 AI와 대화로, 뉴스는 3줄로, 식단은 사진<br />한 장으로, QR은 안전하게. 매일 쓰는 Teddy 앱.</p>
             <div className="cta-row">
               <a className="chip chip-eng" href="#english">Teddy 영어</a>
               <a className="chip chip-news" href="#news">뉴스 브리핑</a>
               <a className="chip chip-diet" href="#diet">곰코치</a>
+              <a className="chip chip-qr" href="#qr">ScanGuard</a>
             </div>
             <PlayBadge href={ENG_URL} big />
           </div>
@@ -111,6 +119,7 @@ export default function Home() {
           { t: "매일 아침, AI가 골라주는 맞춤 뉴스 브리핑", d: "관심사 기반 개인화 피드 · 실시간 시세", icon: "sun", c: "news" },
           { t: "AI가 핵심만 요약, 궁금하면 바로 질문", d: "긴 기사도 3줄 요약 · AI에게 물어보기", icon: "chat", c: "eng" },
           { t: "사진 한 장으로 칼로리·영양까지 기록", d: "찍으면 자동 인식 · 1:1 AI 코치", icon: "camera", c: "diet" },
+          { t: "QR, 찍기 전에 안전부터 확인", d: "악성·피싱 링크 사전 감지 경고", icon: "scan", c: "qr" },
         ].map((card) => (
           <div className={`fcard fcard-${card.c}`} key={card.t}>
             <div className={`ficon ficon-${card.c}`}><Icon name={card.icon} /></div>
@@ -180,7 +189,7 @@ export default function Home() {
             <p>AI가 당신의 매일을 더 똑똑하게 만들어주는<br />뉴스·영어·다이어트 통합 앱 서비스입니다.</p>
             <p className="copy">© {new Date().getFullYear()} Teddy. All rights reserved.</p>
           </div>
-          <div className="footer-col"><h4>서비스</h4><a href={ENG_URL} target="_blank" rel="noopener">Teddy 영어</a><a href={NEWS_URL} target="_blank" rel="noopener">뉴스 브리핑</a><a href={FOOD_URL} target="_blank" rel="noopener">곰코치</a></div>
+          <div className="footer-col"><h4>서비스</h4><a href={ENG_URL} target="_blank" rel="noopener">Teddy 영어</a><a href={NEWS_URL} target="_blank" rel="noopener">뉴스 브리핑</a><a href={FOOD_URL} target="_blank" rel="noopener">곰코치</a><a href={QR_URL} target="_blank" rel="noopener">ScanGuard</a></div>
           <div className="footer-col"><h4>지원</h4><a href="#faq">FAQ</a><a href="mailto:namch1597@gmail.com">문의하기</a></div>
           <div className="footer-col"><h4>다운로드</h4><a href={ENG_URL} target="_blank" rel="noopener">Google Play에서 받기</a></div>
         </div>
